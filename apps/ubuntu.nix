@@ -1,5 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-unstable, ... }:
 {
+  home.packages = [
+    pkgs.qtcreator
+    pkgs.steam
+    pkgs-unstable.nixgl.nixGLIntel
+  ];
   # home.sessionVariables = {
   #   GTK_THEME = "Adwaita-dark";
   #   XCURSOR_THEME = "DMZ-Black";

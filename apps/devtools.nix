@@ -23,6 +23,7 @@
       keybase-gui
       discord
       teams-for-linux
+      whatsapp-for-linux
 
       bitwarden-desktop
       bitwarden-cli
@@ -34,7 +35,6 @@
       virt-manager
       virt-manager-qt
       rpi-imager
-      yazi
     ])
     ++
     (with pkgs-unstable; [
@@ -42,6 +42,9 @@
       conftest
       neovim
       dunst
+
+      keepassxc
+      keepassxc-go
     ]);
   programs.awscli.enable = true;
   programs.k9s.enable = true;
@@ -129,6 +132,17 @@
       };
 
     };
+  };
+
+  programs.kitty = {
+    enable = true;
+    themeFile = "kanagawa";
+    font = {
+      name = "JetBrainsMono Nerd Font";
+      size = 12.0;
+      package = pkgs.nerdfonts;
+    };
+
   };
 
   programs.vscode.enable = true;
