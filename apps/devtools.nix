@@ -17,6 +17,9 @@
       stow
       uv
       pipx
+
+      nodejs
+
       pritunl-client
       cloudflare-warp
       keybase
@@ -149,7 +152,5 @@
     };
 
   };
-
-  programs.vscode.enable = true;
 }
 
