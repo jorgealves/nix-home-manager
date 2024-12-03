@@ -23,7 +23,7 @@
     # You should not change this value, even if you update Home Manager. If you do
     # want to update the value, then make sure to first check the Home Manager
     # release notes.
-    stateVersion = "24.05"; # Please read the comment before changing.
+    stateVersion = "25.05"; # Please read the comment before changing.
     enableNixpkgsReleaseCheck = false;
     preferXdgDirectories = true;
     username = "jalves";
@@ -45,7 +45,20 @@
       EDITOR = "nvim";
       BROWSER = "firefox";
       TERMINAL = "kitty";
+      QT_XCB_GL_INTEGRATION = "none";
     };
+
+    file = {
+      "starship.toml" = {
+        enable = true;
+        source = ./configs/starship.toml;
+        target = ".config/starship.toml";
+        force = true;
+
+
+      };
+    };
+
   };
 
   programs.home-manager.enable = true;

@@ -43,6 +43,10 @@
       neovim
       dunst
 
+      alacritty
+      traceroute
+      tldr
+
       keepassxc
       keepassxc-go
     ]);
@@ -136,7 +140,8 @@
 
   programs.kitty = {
     enable = true;
-    themeFile = "kanagawa";
+    themeFile = "Catppuccin-Mocha";
+    package = pkgs-unstable.kitty;
     font = {
       name = "JetBrainsMono Nerd Font";
       size = 12.0;
