@@ -16,8 +16,11 @@ $all\
 $line_break$character"""
 
 right_format = """
+$aws\
+$kubernetes\
 [](color_orange)\
 $status\
+$cmd_duration\
 [](bg:color_bg1 fg:color_orange)\
 $time\
 [ ](fg:color_bg1)\
@@ -39,6 +42,13 @@ color_yellow = '#d79921'
 
 [aws]
 format = '[$symbol($profile )(\($region\) )]($style)'
+
+[kubernetes]
+disables = false
+format = '[$symbol$context( \($namespace\))]($style)'
+
+[gcloud]
+disabled = true
 
 [os]
 disabled = false
