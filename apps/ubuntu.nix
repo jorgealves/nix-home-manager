@@ -2,8 +2,8 @@
 {
   home.packages = [
     pkgs.qtcreator
-    pkgs.steam
     pkgs-unstable.nixgl.nixGLIntel
+    pkgs-unstable.telegram-desktop
   ];
   # home.sessionVariables = {
   #   GTK_THEME = "Adwaita-dark";

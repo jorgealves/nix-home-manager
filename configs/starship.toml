@@ -12,19 +12,9 @@ $git_commit\
 $git_metrics\
 $git_status\
 [ ](fg:color_aqua)\
+$python\
 $all\
 $line_break$character"""
-
-right_format = """
-$aws\
-$kubernetes\
-[](color_orange)\
-$status\
-$cmd_duration\
-[](bg:color_bg1 fg:color_orange)\
-$time\
-[ ](fg:color_bg1)\
-"""
 
 palette = 'gruvbox_dark'
 
@@ -44,7 +34,7 @@ color_yellow = '#d79921'
 format = '[$symbol($profile )(\($region\) )]($style)'
 
 [kubernetes]
-disables = false
+disabled = false
 format = '[$symbol$context( \($namespace\))]($style)'
 
 [gcloud]
@@ -110,60 +100,6 @@ disabled = false
 added_style = "bg:color_aqua fg:bold yellow"
 deleted_style = "bg:red fg:bold yellow"
 format = "([+$added ]($added_style))([ -$deleted ]($deleted_style))"
-
-[nodejs]
-symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
-
-[c]
-symbol = " "
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
-
-[rust]
-symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
-
-[golang]
-symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
-
-[php]
-symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
-
-[java]
-symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
-
-[kotlin]
-symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
-
-[haskell]
-symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
-
-[python]
-symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
-
-[docker_context]
-symbol = ""
-style = "bg:color_bg3"
-format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)'
-
-[conda]
-style = "bg:color_bg3"
-format = '[[ $symbol( $environment) ](fg:#83a598 bg:color_bg3)]($style)'
 
 [time]
 disabled = false

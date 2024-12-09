@@ -86,6 +86,10 @@
   #   withNodeJs = true;
   #   withRuby = true;
   # };
+  programs.git-cliff = {
+    enable = true;
+    package = pkgs-unstable.git-cliff;
+  };
   programs.lazygit.enable = true;
   programs.git = {
     enable = true;
