@@ -19,7 +19,7 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     shellAliases = {
-      nix-update = "nix-channel --update && nix flake update --flake ~/projects/personal/nix-home-manager && home-manager switch --flake ~/projects/personal/nix-home-manager";
+      nix-update = "nix-channel --update && nix flake update --flake ~/.config/home-manager && home-manager switch --flake ~/.config/home-manager";
       l = "exa --icons -s type -lha";
       dvton = "sudo vpnc-connect";
       dvtoff = "sudo vpnc-disconnect";
