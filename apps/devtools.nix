@@ -156,5 +156,9 @@
     };
 
   };
+
+  services.ollama = {
+    enable = true;
+  }
 }
 
