@@ -32,7 +32,6 @@
       bitwarden-cli
 
       obsidian
-      ollama
       barrier
       qemu
       virt-manager
@@ -52,6 +51,8 @@
 
       keepassxc
       keepassxc-go
+
+      ollama
     ]);
   programs.awscli.enable = true;
   programs.k9s.enable = true;
@@ -155,10 +156,6 @@
       package = pkgs.nerdfonts;
     };
 
-  };
-
-  services.ollama = {
-    enable = true;
   };
 }
 
