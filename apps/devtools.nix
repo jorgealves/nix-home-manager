@@ -9,7 +9,6 @@
       minikube
       kind
       docker
-      podman
 
       lazydocker
       lazygit
@@ -26,7 +25,6 @@
       keybase-gui
       discord
       teams-for-linux
-      whatsapp-for-linux
 
       bitwarden-desktop
       bitwarden-cli
@@ -53,6 +51,11 @@
       keepassxc-go
 
       ollama
+
+
+      google-chrome
+      brave
+      firefox
     ]);
   programs.awscli.enable = true;
   programs.k9s.enable = true;
@@ -144,18 +147,6 @@
       };
 
     };
-  };
-
-  programs.kitty = {
-    enable = true;
-    themeFile = "Catppuccin-Mocha";
-    package = pkgs-unstable.kitty;
-    font = {
-      name = "JetBrainsMono Nerd Font";
-      size = 12.0;
-      package = pkgs.nerdfonts;
-    };
-
   };
 }
 
