@@ -52,11 +52,6 @@
 
       ollama
 
-
-      google-chrome
-      chromium
-      brave
-      firefox
     ]);
   programs.awscli.enable = true;
   programs.k9s.enable = true;
