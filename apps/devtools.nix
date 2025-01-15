@@ -54,6 +54,7 @@
 
 
       google-chrome
+      chromium
       brave
       firefox
     ]);
