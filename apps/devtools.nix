@@ -19,6 +19,9 @@
 
       nodejs
 
+      terraform
+      tflint
+
       pritunl-client
       cloudflare-warp
       keybase
