@@ -18,6 +18,11 @@
       pipx
 
       nodejs
+      deno
+      bun
+
+      rustup
+      go
 
       terraform
       tflint
@@ -26,8 +31,6 @@
       cloudflare-warp
       keybase
       keybase-gui
-      discord
-      teams-for-linux
 
       bitwarden-desktop
       bitwarden-cli
@@ -54,12 +57,12 @@
       keepassxc-go
 
       ollama
-
     ]);
   programs.awscli.enable = true;
   programs.k9s.enable = true;
   programs.poetry = {
     enable = true;
+    package = pkgs-unstable.poetry;
     settings = {
       virtualenvs.create = true;
       virtualenvs.in-project = true;
