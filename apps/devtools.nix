@@ -41,6 +41,10 @@
       virt-manager
       virt-manager-qt
       rpi-imager
+
+      discord
+      teams-for-linux
+      slack
     ])
     ++
     (with pkgs-unstable; [
@@ -104,13 +108,16 @@
     };
     userEmail = "jorgeandrealves@gmail.com";
     userName = "Jorge Alves";
-    signing.key = "~/.ssh/id_signing";
+    signing = {
+      key = "~/.ssh/id_signing";
+      signByDefault = true;
+      format = "ssh";
+    };
     diff-highlight.enable = true;
     aliases = {
       logg = "log --oneline --graph --decorate";
       gst = "status";
     };
-    signing.signByDefault = true;
     includes = [
       {
         path = "~/.gitconfig_dvt";

@@ -1,5 +1,5 @@
 # Here I´m installing and configuring ZSH tools
-{ pkgs-unstable, ... }:
+{pkgs, pkgs-unstable, ... }:
 {
   programs.bat.enable = true;
   programs.eza = {
@@ -79,7 +79,7 @@
 
   programs.tmux = {
     enable = true;
-    plugins = with pkgs-unstable; [
+    plugins = with pkgs; [
       tmuxPlugins.catppuccin
       tmuxPlugins.resurrect
       tmuxPlugins.continuum
