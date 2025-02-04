@@ -2,13 +2,6 @@
 {
   home.packages =
     (with pkgs; [
-      kubectx
-      kubectl
-      krew
-      kubernetes-helm
-      minikube
-      kind
-      docker
 
       lazydocker
       lazygit
@@ -41,9 +34,20 @@
       virt-manager
       virt-manager-qt
       rpi-imager
+
+      discord
+      teams-for-linux
+      slack
     ])
     ++
     (with pkgs-unstable; [
+      kubectx
+      kubectl
+      krew
+      kubernetes-helm
+      minikube
+      kind
+      docker
       nmap
       conftest
       neovim
@@ -104,13 +108,16 @@
     };
     userEmail = "jorgeandrealves@gmail.com";
     userName = "Jorge Alves";
-    signing.key = "~/.ssh/id_signing";
+    signing = {
+      key = "~/.ssh/id_signing";
+      signByDefault = true;
+      format = "ssh";
+    };
     diff-highlight.enable = true;
     aliases = {
       logg = "log --oneline --graph --decorate";
       gst = "status";
     };
-    signing.signByDefault = true;
     includes = [
       {
         path = "~/.gitconfig_dvt";
