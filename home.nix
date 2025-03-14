@@ -44,7 +44,7 @@
 
     sessionVariables = {
       EDITOR = "nvim";
-      BROWSER = "firefox";
+      BROWSER = "xdg-open:zen:chrome:google-chrome:firefox";
       TERMINAL = "kitty";
       QT_XCB_GL_INTEGRATION = "none";
     };
