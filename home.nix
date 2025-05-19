@@ -1,34 +1,30 @@
-{ ... }:
-{
+{ homeDirectory
+, pkgs
+, stateVersion
+, system
+, username, ... }:
+
+let
+  packages = import ./packages.nix { inherit pkgs; };
+in {
   targets.genericLinux.enable = true;
-  nixpkgs.config = {
-    allowUnfree = true;
-    android_sdk.accept_license = true;
-  };
-
-  imports = [
-    ./apps/zsh.nix
-    ./apps/devtools.nix
-    #   ./programming-languages.nix
-    ./apps/ubuntu.nix
-    #   ./apps/utils.nix
-    ./apps/fonts.nix
-  ];
-
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
-  # This value determines the Home Manager release that your configuration is
-  # compatible with. This helps avoid breakage when a new Home Manager release
-  # introduces backwards incompatible changes.
   home = {
-    # You should not change this value, even if you update Home Manager. If you do
-    # want to update the value, then make sure to first check the Home Manager
-    # release notes.
-    stateVersion = "25.05"; # Please read the comment before changing.
-    enableNixpkgsReleaseCheck = false;
+    inherit homeDirectory packages stateVersion username;
+
+    file = {
+      "starship.toml" = {
+        enable = true;
+        source = ./configs/starship.toml;
+        target = ".config/starship.toml";
+        force = true;
+      };
+    };
+    enableNixpkgsReleaseCheck = true;
     preferXdgDirectories = true;
-    username = "jalves";
-    homeDirectory = "/home/jalves";
+    shellAliases = {
+      reload-home-manager-config = "home-manager switch --flake ${builtins.toString ./.}";
+    };
+
     language = {
       base = "en_US.UTF-8";
       ctype = "en_US.UTF-8";
@@ -49,18 +45,17 @@
       QT_XCB_GL_INTEGRATION = "none";
     };
 
-    file = {
-      "starship.toml" = {
-        enable = true;
-        source = ./configs/starship.toml;
-        target = ".config/starship.toml";
-        force = true;
-
-
-      };
-    };
-
   };
 
-  programs.home-manager.enable = true;
+  nixpkgs = {
+    config = {
+      inherit system;
+      allowUnfree = true;
+      allowUnsupportedSystem = true;
+      experimental-features = "nix-command flakes";
+    };
+  };
+
+  programs = import ./programs.nix;
+
 }

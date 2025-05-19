@@ -1,67 +1,53 @@
 {
-  description = "Home Manager configuration of jalves";
+  description = "Home Manager configuration";
 
   inputs = {
-    # Specify the source of Home Manager and Nixpkgs.
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixGL = {
-      url = "github:nix-community/nixGL";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    # hyprland = {
-    #   url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
   };
 
-  outputs =
-    { self
-    , nixpkgs
-    , nixpkgs-unstable
-    , home-manager
-    , nixGL
-    , ...
+  outputs = { 
+    self, 
+    nixpkgs, 
+    home-manager,
+    ... 
     } @ inputs:
     let
       inherit (self) outputs;
-      system = "x86_64-linux";
+      # Values you should modify
+      username = "jalves"; # $USER
+      system = "x86_64-linux";  # x86_64-linux, aarch64-multiplatform, etc.
+      stateVersion = "24.11";     # See https://nixos.org/manual/nixpkgs/stable for most recent
+
       pkgs = import nixpkgs {
         inherit system;
+
         config = {
           allowUnfree = true;
-          android_sdk.accept_license = true;
         };
       };
-      pkgs-unstable = import nixpkgs-unstable {
-        inherit system;
-        config = {
-          allowUnfree = true;
-          android_sdk.accept_license = true;
-        };
-        overlays = [ nixGL.overlay ];
-      };
-    in
-    {
-      homeConfigurations."jalves" = home-manager.lib.homeManagerConfiguration {
+
+      homeDirPrefix = if pkgs.stdenv.hostPlatform.isDarwin then "/Users" else "/home";
+      homeDirectory = "/${homeDirPrefix}/${username}";
+
+      home = (import ./home.nix {
+        inherit homeDirectory pkgs stateVersion system username;
+      });
+    in {
+      homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
-        modules = [ ./home.nix ];
-
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
+        modules = [
+          home
+        ];
         extraSpecialArgs = {
           inherit inputs;
           inherit outputs;
+          inherit pkgs;
           isNixOs = false;
-          inherit nixGL;
-          inherit pkgs-unstable;
         };
       };
     };

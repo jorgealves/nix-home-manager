@@ -61,6 +61,7 @@
       keepassxc-go
 
       ollama
+      claude-code
     ]);
   programs.awscli.enable = true;
   programs.k9s.enable = true;

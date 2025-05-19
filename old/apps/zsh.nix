@@ -15,61 +15,6 @@
   programs.htop.enable = true;
   programs.zsh = {
     enable = true;
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-    shellAliases = {
-      nix-update = "nix-channel --update && nix flake update --flake ~/.config/home-manager && home-manager switch --flake ~/.config/home-manager";
-      l = "exa --icons -s type -lha";
-      dvton = "sudo vpnc-connect";
-      dvtoff = "sudo vpnc-disconnect";
-      tmstart = "bash ~/tat";
-      pbcopy = "xclip -selection clipboard";
-    };
-    oh-my-zsh = {
-      enable = true;
-      plugins = [
-        "aliases"
-        "ansible"
-        "aws"
-        "azure"
-        "command-not-found"
-        "docker"
-        "eza"
-        "fzf"
-        "gcloud"
-        "git"
-        "git-auto-fetch"
-        "git-commit"
-        "git-extras"
-        "git-flow"
-        "gitignore"
-        "gpg-agent"
-        "helm"
-        "history-substring-search"
-        "kind"
-        "kubectl"
-        "kubectx"
-        "kube-ps1"
-        "minikube"
-        "nmap"
-        "perms"
-        "podman"
-        "pre-commit"
-        "rsync"
-        "starship"
-        "ssh"
-        "ssh-agent"
-        "sudo"
-        "tmux"
-        "vscode"
-        "z"
-      ];
-      extraConfig = ''
-        export PATH=$HOME/.local/bin:$PATH
-        export PATH=$HOME/.krew/bin:$PATH # Kubectl krew
-      '';
-    };
   };
 
   programs.starship = {

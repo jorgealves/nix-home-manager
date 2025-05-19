@@ -9,22 +9,22 @@
   #   XCURSOR_THEME = "DMZ-Black";
   #   QA_QPA_PLATFORMTHEME = "gtk2";
   # };
-  editorconfig = {
-    enable = true;
-    settings = {
-      "*" = {
-        end_of_line = "lf";
-        insert_final_newline = true;
-      };
-      "*.{js,py}" = {
-        charset = "utf-8";
-      };
-      "*.py" = {
-        indent_style = "space";
-        indent_size = 4;
-      };
-    };
-  };
+  # editorconfig = {
+  #   enable = true;
+  #   settings = {
+  #     "*" = {
+  #       end_of_line = "lf";
+  #       insert_final_newline = true;
+  #     };
+  #     "*.{js,py}" = {
+  #       charset = "utf-8";
+  #     };
+  #     "*.py" = {
+  #       indent_style = "space";
+  #       indent_size = 4;
+  #     };
+  #   };
+  # };
   # gtk = {
   #   enable = true;
   #   font.name = "Fira Code Nerdfont";
@@ -39,7 +39,7 @@
   xdg = {
     enable = true;
   };
-  programs.autorandr.enable = true;
+  # programs.autorandr.enable = true;
   # programs.ssh.enable = true;
 
 }
