@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+
+  imports = [
+    ./modules/git.nix
+  ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "jalves";
@@ -104,7 +108,7 @@
     };
     "nvim" = {
       enable = true;
-      force= true;
+      force = true;
       recursive = true;
       source = ./configs/nvim;
       target = ".config/nvim";
@@ -292,63 +296,6 @@
     enable = true;
     settings = {
       line-length = 100;
-    };
-  };
-  programs.git-cliff = {
-    enable = true;
-  };
-  programs.lazygit.enable = true;
-  programs.git = {
-    enable = true;
-    lfs = {
-      enable = true;
-    };
-    userEmail = "jorgeandrealves@gmail.com";
-    userName = "Jorge Alves";
-    signing.key = "~/.ssh/id_signing";
-    diff-highlight.enable = true;
-    aliases = {
-      logg = "log --oneline --graph --decorate";
-      gst = "status";
-    };
-    signing.signByDefault = true;
-    includes = [
-      {
-        path = "~/.gitconfig_dvt";
-        condition = "gitdir:~/projects/devoteam/**";
-      }
-      {
-        path = "~/.gitconfig_wrt";
-        condition = "gitdir:~/projects/worten/**";
-      }
-    ];
-    extraConfig = {
-      core = {
-        editor = "nvim";
-        excludesFile = "~/.gitignore_global";
-      };
-      safe = {
-        directory = "~/projects";
-      };
-      init = {
-        defaultBranch = "main";
-      };
-      help = {
-        autocorrect = "prompt";
-      };
-      gpg = {
-        format = "ssh";
-      };
-      blame = {
-        coloring = "highlightRecent";
-      };
-      grep = {
-        lineNumber = true;
-      };
-      commit = {
-        gpgSigning = true;
-      };
-
     };
   };
   # Let Home Manager install and manage itself.
