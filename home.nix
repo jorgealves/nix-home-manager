@@ -1,15 +1,18 @@
-{ config, pkgs, ... }:
+{ pkgs, inputs, system, ... }:
 
 {
 
   imports = [
     ./modules/git.nix
   ];
+  # enable generic linux
+  targets.genericLinux.enable = true;
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "jalves";
   home.homeDirectory = "/home/jalves";
   home.preferXdgDirectories = true;
+  home.enableNixpkgsReleaseCheck = true;
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -57,7 +60,6 @@
     bitwarden-cli
 
     obsidian
-    barrier
     conftest
     neovim
 
@@ -65,6 +67,10 @@
 
     teams-for-linux
     discord
+
+    jq
+
+    firefox
 
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -148,6 +154,7 @@
     EDITOR = "nvim";
   };
 
+  xdg.enable = true;
   programs.bat.enable = true;
   programs.eza = {
     enable = true;
@@ -196,8 +203,8 @@
         "helm"
         "history-substring-search"
         "kind"
-        "kubectl"
-        "kubectx"
+        # "kubectl"
+        # "kubectx"
         "kube-ps1"
         "minikube"
         "nmap"
@@ -215,7 +222,7 @@
       ];
       extraConfig = ''
         export PATH=$HOME/.local/bin:$PATH
-        export PATH=$HOME/.krew/bin:$PATH # Kubectl krew
+        export PATH=$HOME/.krew/bin:$PATH
       '';
     };
   };
@@ -301,7 +308,9 @@
       line-length = 100;
     };
   };
-  # Let Home Manager install and manage itself.
 
+
+  programs.vscode.enable = true;
+  # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }

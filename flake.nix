@@ -8,14 +8,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
-    { nixpkgs, home-manager, ... }:
+    inputs@{ nixpkgs, home-manager, ... }:
     let
       username = "jalves";
       homeDirectory = if builtins.currentSystem == "x86_64-darwin" then "/Users/${username}" else "/home/${username}";
@@ -25,16 +21,23 @@
         config = { allowUnfree = true; allowUnfreePredicate = _: true; };
       };
     in
-      {
+    {
+      home-manager.useGlobalPkgs = true;
+      home-manager.useUserPackages = true;
       homeConfigurations."${username}" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
+
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
-        modules = [ ./home.nix ];
+        modules = [
+          ./home.nix
+        ];
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
         extraSpecialArgs = {
+          inherit inputs;
+          inherit system;
           isNixOS = false;
         };
       };
