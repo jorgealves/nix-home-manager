@@ -41,8 +41,6 @@
     uv
     pipx
 
-    nodejs
-
     rustup
     go
 
@@ -206,6 +204,7 @@
         "kube-ps1"
         "minikube"
         "nmap"
+        "nvm"
         "perms"
         "podman"
         "pre-commit"
@@ -221,6 +220,8 @@
       extraConfig = ''
         export PATH=$HOME/.local/bin:$PATH
         export PATH=$HOME/.krew/bin:$PATH
+        export NVM_DIR="$HOME/.config/nvm"
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
       '';
     };
   };
