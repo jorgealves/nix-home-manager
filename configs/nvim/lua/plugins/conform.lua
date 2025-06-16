@@ -1,3 +1,6 @@
+-- This plugin is used for formatting code in Neovim.
+-- It supports multiple formatters and can run them sequentially.
+
 return {
 	"stevearc/conform.nvim",
 	opts = {
