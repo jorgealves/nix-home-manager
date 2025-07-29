@@ -1,0 +1,45 @@
+{
+    "common": [
+        "git",
+        "kitty",
+        "neovim",
+        "kubectl",
+        "lazygit",
+        "lazydocker",
+        "lazy",
+        "kubectx",
+        "krew",
+        "kubernetes-helm",
+        "minikube",
+        "kind",
+        "skopeo",
+        "stow",
+        "uv",
+        "pipx",
+        "rustup",
+        "go",
+        "terraform",
+        "tflint",
+        "pritunl-client",
+        "cloudflare-warp",
+        "keybase",
+        "keybase-gui",
+        "bitwarden-desktop",
+        "bitwarden-cli",
+        "obsidian",
+        "conftest",
+        "neovim",
+        "tldr",
+        "discord",
+        "jq",
+        "firefox",
+        "google-chrome",
+        "zen-browser"
+    ],
+    "darwin": [
+        "brew"
+    ],
+    "linux": [
+        "hyprland"
+    ]
+}

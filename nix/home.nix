@@ -23,69 +23,17 @@
   # release notes.
   home.stateVersion = "25.05"; # Please read the comment before changing.
 
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
-  home.packages = with pkgs; [
-    kubectx
-    kubectl
-    krew
-    kubernetes-helm
-    minikube
-    kind
-    docker
-
-    lazydocker
-    lazygit
-    skopeo
-
-    stow
-    uv
-    pipx
-
-    rustup
-    go
-
-    terraform
-    tflint
-
-    pritunl-client
-    cloudflare-warp
-    keybase
-    keybase-gui
-
-    bitwarden-desktop
-    bitwarden-cli
-
-    obsidian
-    conftest
-    neovim
-
-    tldr
-
-    teams-for-linux
-    discord
-
-    jq
-
-    firefox
-
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
-
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
-  ];
+  # The home.packages option now imports from packages.json
+  
+  packageData = builtins.fromJSON (builtins.readFile ../packages.json);
+  getPkg = name: if pkgs ? ${name} then pkgs.${name} else null;
+  systemPkgs =
+    (map getPkg packageData.common)
+    ++ (if pkgs.stdenv.isDarwin && packageData ? darwin then map getPkg packageData.darwin else [])
+    ++ (if pkgs.stdenv.isLinux && packageData ? linux then map getPkg packageData.linux else []);
+  filteredPkgs = builtins.filter (x: x != null) systemPkgs;
+  
+  home.packages = filteredPkgs;
 
   editorconfig = {
     enable = true;
