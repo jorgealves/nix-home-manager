@@ -112,13 +112,13 @@
     #   source = ./configs/starship.toml;
     #   target = ".config/starship.toml";
     # };
-    # "nvim" = {
-    #   enable = true;
-    #   force = true;
-    #   recursive = true;
-    #   source = ./configs/nvim;
-    #   target = ".config/nvim";
-    # };
+    "nvim" = {
+      enable = true;
+      force = true;
+      recursive = true;
+      source = ./configs/nvim;
+      target = ".config/nvim";
+    };
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
