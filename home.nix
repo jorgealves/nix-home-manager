@@ -44,6 +44,7 @@
 
     rustup
     go
+    nodejs_24
 
     terraform
     tflint
@@ -116,7 +117,7 @@
       enable = true;
       force = true;
       recursive = true;
-      source = ./configs/nvim;
+      source = ./dotfiles/nvim;
       target = ".config/nvim";
     };
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
